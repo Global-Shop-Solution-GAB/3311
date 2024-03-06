@@ -1,0 +1,932 @@
+Program.Sub.ScreenSU.Start
+gui.SS_Form1..create
+gui.SS_Form1..caption("Work Order Summary by Product Line")
+gui.SS_Form1..size(6160,9225)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(,,,,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1..event(unload,ss_form1_unload)
+gui.SS_Form1.lbl_dtp1_Begdate.create(label,"Cutoff Date",True,1800,200,1,100,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtp1_Begdate.create(datepicker)
+gui.SS_Form1.dtp1_Begdate.visible(True)
+gui.SS_Form1.dtp1_Begdate.size(1800,345)
+gui.SS_Form1.dtp1_Begdate.position(100,335)
+gui.SS_Form1.dtp1_Begdate.enabled(True)
+gui.SS_Form1.dtp1_Begdate.fontname("Arial")
+gui.SS_Form1.lbl_dtp1_Begdate.setinternationalid(156600)
+gui.SS_Form1.lbl_txt1_BegPL.create(label,"Beginning Product Line",True,1800,200,1,100,850,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txt1_BegPL.setinternationalid(62500)
+gui.SS_Form1.txt1_BegPL.create(textbox,"",True,1800,330,1,100,1050,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txt1_BegPL.event(gotfocus,txt1_begpl_gotfocus)
+gui.SS_Form1.txt1_BegPL.event(lostfocus,txt1_begpl_lostfocus)
+Gui.SS_Form1.cmd_txt1_BegPL.create(button)
+gui.SS_Form1.cmd_txt1_BegPL.Caption("^")
+gui.SS_Form1.cmd_txt1_BegPL.visible(True)
+gui.SS_Form1.cmd_txt1_BegPL.size(330,330)
+gui.SS_Form1.cmd_txt1_BegPL.position(1985,1050)
+gui.SS_Form1.cmd_txt1_BegPL.enabled(True)
+gui.SS_Form1.cmd_txt1_BegPL.fontname("Arial")
+gui.SS_Form1.cmd_txt1_BegPL.fontsize(8)
+gui.SS_Form1.cmd_txt1_BegPL.event(click,cmd_txt1_begpl_click)
+gui.SS_Form1.lbl_txt2_EndPL.create(label,"Ending Product Line",True,1800,200,1,2455,850,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txt2_EndPL.setinternationalid(215100)
+gui.SS_Form1.txt2_EndPL.create(textbox,"",True,1800,330,1,2455,1050,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txt2_EndPL.event(gotfocus,txt2_endpl_gotfocus)
+Gui.SS_Form1.cmd_txt2_EndPL.create(button)
+gui.SS_Form1.cmd_txt2_EndPL.Caption("^")
+gui.SS_Form1.cmd_txt2_EndPL.visible(True)
+gui.SS_Form1.cmd_txt2_EndPL.size(330,330)
+gui.SS_Form1.cmd_txt2_EndPL.position(4340,1050)
+gui.SS_Form1.cmd_txt2_EndPL.enabled(True)
+gui.SS_Form1.cmd_txt2_EndPL.fontname("Arial")
+gui.SS_Form1.cmd_txt2_EndPL.fontsize(8)
+gui.SS_Form1.cmd_txt2_EndPL.event(click,cmd_txt2_endpl_click)
+gui.SS_Form1.chk2_AllPL.create(checkbox)
+gui.SS_Form1.chk2_AllPL.Caption("All Product Lines")
+gui.SS_Form1.chk2_AllPL.visible(True)
+gui.SS_Form1.chk2_AllPL.size(1800,300)
+gui.SS_Form1.chk2_AllPL.position(100,1385)
+gui.SS_Form1.chk2_AllPL.enabled(True)
+gui.SS_Form1.chk2_AllPL.fontname("Arial")
+gui.SS_Form1.chk2_AllPL.fontsize(8)
+gui.SS_Form1.chk2_AllPL.setinternationalid(21600)
+gui.SS_Form1.chk2_AllPL.event(click,chk2_allpl_click)
+gui.SS_Form1.lvw1_PL.create(listview)
+gui.SS_Form1.lvw1_PL.view(3)
+gui.SS_Form1.lvw1_PL.visible(True)
+gui.SS_Form1.lvw1_PL.size(5810,2000)
+gui.SS_Form1.lvw1_PL.position(100,1935)
+gui.SS_Form1.lvw1_PL.enabled(True)
+gui.SS_Form1.lvw1_PL.fontname("Arial")
+gui.SS_Form1.lvw1_PL.fontsize(8)
+gui.SS_Form1.lvw1_PL.addlistviewcolumn(variable.Translation.62500,2705,0)
+gui.SS_Form1.lvw1_PL.addlistviewcolumn(variable.Translation.215100,2705,0)
+Gui.SS_Form1.cmd_lvw1_PLAdd.create(button)
+gui.SS_Form1.cmd_lvw1_PLAdd.Caption("Add")
+gui.SS_Form1.cmd_lvw1_PLAdd.visible(True)
+gui.SS_Form1.cmd_lvw1_PLAdd.size(1000,330)
+gui.SS_Form1.cmd_lvw1_PLAdd.position(4810,1050)
+gui.SS_Form1.cmd_lvw1_PLAdd.enabled(True)
+gui.SS_Form1.cmd_lvw1_PLAdd.fontname("Arial")
+gui.SS_Form1.cmd_lvw1_PLAdd.fontsize(8)
+gui.SS_Form1.cmd_lvw1_PLAdd.setinternationalid(7600)
+gui.SS_Form1.cmd_lvw1_PLadd.event(click,cmd_lvw1_pladd_click)
+Gui.SS_Form1.cmd_lvw1_PLDelete.create(button)
+gui.SS_Form1.cmd_lvw1_PLDelete.Caption("Delete")
+gui.SS_Form1.cmd_lvw1_PLDelete.visible(True)
+gui.SS_Form1.cmd_lvw1_PLDelete.size(1000,330)
+gui.SS_Form1.cmd_lvw1_PLDelete.position(100,4020)
+gui.SS_Form1.cmd_lvw1_PLDelete.enabled(True)
+gui.SS_Form1.cmd_lvw1_PLDelete.fontname("Arial")
+gui.SS_Form1.cmd_lvw1_PLDelete.fontsize(8)
+gui.SS_Form1.cmd_lvw1_PLDelete.setinternationalid(171500)
+gui.SS_Form1.cmd_lvw1_PLdelete.event(click,cmd_lvw1_pldelete_click)
+Gui.SS_Form1.cmd_lvw1_PLClear.create(button)
+gui.SS_Form1.cmd_lvw1_PLClear.Caption("Clear")
+gui.SS_Form1.cmd_lvw1_PLClear.visible(True)
+gui.SS_Form1.cmd_lvw1_PLClear.size(1000,330)
+gui.SS_Form1.cmd_lvw1_PLClear.position(1185,4020)
+gui.SS_Form1.cmd_lvw1_PLClear.enabled(True)
+gui.SS_Form1.cmd_lvw1_PLClear.fontname("Arial")
+gui.SS_Form1.cmd_lvw1_PLClear.fontsize(8)
+gui.SS_Form1.cmd_lvw1_PLClear.setinternationalid(106700)
+gui.SS_Form1.cmd_lvw1_PLclear.event(click,cmd_lvw1_plclear_click)
+gui.SS_Form1.lbl_txt1_BegWO.create(label,"Beginning Work Order",True,1800,200,1,100,4550,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txt1_BegWO.setinternationalid(64400)
+gui.SS_Form1.txt1_BegWO.create(textbox,"",True,1800,330,1,100,4750,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txt1_BegWO.event(gotfocus,txt1_begwo_gotfocus)
+gui.SS_Form1.txt1_BegWO.event(lostfocus,txt1_begwo_lostfocus)
+Gui.SS_Form1.cmd_txt1_BegWO.create(button)
+gui.SS_Form1.cmd_txt1_BegWO.Caption("^")
+gui.SS_Form1.cmd_txt1_BegWO.visible(True)
+gui.SS_Form1.cmd_txt1_BegWO.size(330,330)
+gui.SS_Form1.cmd_txt1_BegWO.position(1985,4750)
+gui.SS_Form1.cmd_txt1_BegWO.enabled(True)
+gui.SS_Form1.cmd_txt1_BegWO.fontname("Arial")
+gui.SS_Form1.cmd_txt1_BegWO.fontsize(8)
+gui.SS_Form1.cmd_txt1_BegWO.event(click,cmd_txt1_begwo_click)
+gui.SS_Form1.lbl_txt1_EndWO.create(label,"Ending Work Order",True,1800,200,1,2455,4550,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txt1_EndWO.setinternationalid(217300)
+gui.SS_Form1.txt1_EndWO.create(textbox,"",True,1800,330,1,2455,4750,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txt1_EndWO.event(gotfocus,txt1_endwo_gotfocus)
+Gui.SS_Form1.cmd_txt1_EndWO.create(button)
+gui.SS_Form1.cmd_txt1_EndWO.Caption("^")
+gui.SS_Form1.cmd_txt1_EndWO.visible(True)
+gui.SS_Form1.cmd_txt1_EndWO.size(330,330)
+gui.SS_Form1.cmd_txt1_EndWO.position(4340,4750)
+gui.SS_Form1.cmd_txt1_EndWO.enabled(True)
+gui.SS_Form1.cmd_txt1_EndWO.fontname("Arial")
+gui.SS_Form1.cmd_txt1_EndWO.fontsize(8)
+gui.SS_Form1.cmd_txt1_EndWO.event(click,cmd_txt1_endwo_click)
+gui.SS_Form1.chk1_AllWO.create(checkbox)
+gui.SS_Form1.chk1_AllWO.Caption("All Work Orders")
+gui.SS_Form1.chk1_AllWO.visible(True)
+gui.SS_Form1.chk1_AllWO.size(1800,300)
+gui.SS_Form1.chk1_AllWO.position(100,5085)
+gui.SS_Form1.chk1_AllWO.enabled(True)
+gui.SS_Form1.chk1_AllWO.fontname("Arial")
+gui.SS_Form1.chk1_AllWO.fontsize(8)
+gui.SS_Form1.chk1_AllWO.setinternationalid(18803)
+gui.SS_Form1.chk1_AllWO.event(click,chk1_allwo_click)
+gui.SS_Form1.lvw1_WO.create(listview)
+gui.SS_Form1.lvw1_WO.view(3)
+gui.SS_Form1.lvw1_WO.visible(True)
+gui.SS_Form1.lvw1_WO.size(5810,2000)
+gui.SS_Form1.lvw1_WO.position(100,5635)
+gui.SS_Form1.lvw1_WO.enabled(True)
+gui.SS_Form1.lvw1_WO.fontname("Arial")
+gui.SS_Form1.lvw1_WO.fontsize(8)
+gui.SS_Form1.lvw1_WO.addlistviewcolumn(variable.Translation.64400,2705,0)
+gui.SS_Form1.lvw1_WO.addlistviewcolumn(variable.Translation.217300,2705,0)
+Gui.SS_Form1.cmd_lvw1_WOAdd.create(button)
+gui.SS_Form1.cmd_lvw1_WOAdd.Caption("Add")
+gui.SS_Form1.cmd_lvw1_WOAdd.visible(True)
+gui.SS_Form1.cmd_lvw1_WOAdd.size(1000,330)
+gui.SS_Form1.cmd_lvw1_WOAdd.position(4810,4750)
+gui.SS_Form1.cmd_lvw1_WOAdd.enabled(True)
+gui.SS_Form1.cmd_lvw1_WOAdd.fontname("Arial")
+gui.SS_Form1.cmd_lvw1_WOAdd.fontsize(8)
+gui.SS_Form1.cmd_lvw1_WOAdd.setinternationalid(7600)
+gui.SS_Form1.cmd_lvw1_WOadd.event(click,cmd_lvw1_woadd_click)
+Gui.SS_Form1.cmd_lvw1_WODelete.create(button)
+gui.SS_Form1.cmd_lvw1_WODelete.Caption("Delete")
+gui.SS_Form1.cmd_lvw1_WODelete.visible(True)
+gui.SS_Form1.cmd_lvw1_WODelete.size(1000,330)
+gui.SS_Form1.cmd_lvw1_WODelete.position(100,7720)
+gui.SS_Form1.cmd_lvw1_WODelete.enabled(True)
+gui.SS_Form1.cmd_lvw1_WODelete.fontname("Arial")
+gui.SS_Form1.cmd_lvw1_WODelete.fontsize(8)
+gui.SS_Form1.cmd_lvw1_WODelete.setinternationalid(171500)
+gui.SS_Form1.cmd_lvw1_WOdelete.event(click,cmd_lvw1_wodelete_click)
+Gui.SS_Form1.cmd_lvw1_WOClear.create(button)
+gui.SS_Form1.cmd_lvw1_WOClear.Caption("Clear")
+gui.SS_Form1.cmd_lvw1_WOClear.visible(True)
+gui.SS_Form1.cmd_lvw1_WOClear.size(1000,330)
+gui.SS_Form1.cmd_lvw1_WOClear.position(1185,7720)
+gui.SS_Form1.cmd_lvw1_WOClear.enabled(True)
+gui.SS_Form1.cmd_lvw1_WOClear.fontname("Arial")
+gui.SS_Form1.cmd_lvw1_WOClear.fontsize(8)
+gui.SS_Form1.cmd_lvw1_WOClear.setinternationalid(106700)
+gui.SS_Form1.cmd_lvw1_WOclear.event(click,cmd_lvw1_woclear_click)
+gui.SS_Form1.cmd1_Print.create(button)
+gui.SS_Form1.cmd1_Print.Caption("Print")
+gui.SS_Form1.cmd1_Print.visible(True)
+gui.SS_Form1.cmd1_Print.size(1000,360)
+gui.SS_Form1.cmd1_Print.position(100,8250)
+gui.SS_Form1.cmd1_Print.enabled(True)
+gui.SS_Form1.cmd1_Print.fontname("Arial")
+gui.SS_Form1.cmd1_Print.fontsize(8)
+gui.SS_Form1.cmd1_Print.setinternationalid(452800)
+gui.SS_Form1.cmd1_Print.event(click,cmd1_print_click)
+gui.SS_Form1.dtp1_Begdate.tabstop(true)
+gui.SS_Form1.dtp1_Begdate.tabindex(1)
+gui.SS_Form1.txt1_BegPL.tabstop(true)
+gui.SS_Form1.txt1_BegPL.tabindex(2)
+gui.SS_Form1.cmd_txt1_BegPL.tabstop(true)
+gui.SS_Form1.cmd_txt1_BegPL.tabindex(3)
+gui.SS_Form1.txt2_EndPL.tabstop(true)
+gui.SS_Form1.txt2_EndPL.tabindex(4)
+gui.SS_Form1.cmd_txt2_EndPL.tabstop(true)
+gui.SS_Form1.cmd_txt2_EndPL.tabindex(5)
+gui.SS_Form1.cmd_lvw1_PLAdd.tabstop(true)
+gui.SS_Form1.cmd_lvw1_PLAdd.tabindex(6)
+gui.SS_Form1.chk2_AllPL.tabstop(true)
+gui.SS_Form1.chk2_AllPL.tabindex(7)
+gui.SS_Form1.txt1_BegWO.tabstop(true)
+gui.SS_Form1.txt1_BegWO.tabindex(8)
+gui.SS_Form1.cmd_txt1_BegWO.tabstop(true)
+gui.SS_Form1.cmd_txt1_BegWO.tabindex(9)
+gui.SS_Form1.txt1_EndWO.tabstop(true)
+gui.SS_Form1.txt1_EndWO.tabindex(10)
+gui.SS_Form1.cmd_txt1_EndWO.tabstop(true)
+gui.SS_Form1.cmd_txt1_EndWO.tabindex(11)
+gui.SS_Form1.cmd_lvw1_WOAdd.tabstop(true)
+gui.SS_Form1.cmd_lvw1_WOAdd.tabindex(12)
+gui.SS_Form1.chk1_AllWO.tabstop(true)
+gui.SS_Form1.chk1_AllWO.tabindex(13)
+gui.SS_Form1.cmd1_Print.tabstop(true)
+gui.SS_Form1.cmd1_Print.tabindex(14)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.UDT.uJob.Define("sTerminal",String)
+Variable.UDT.uJob.Define("sJob",String,"Job")
+Variable.UDT.uJob.Define("sSuffix",String,"Suffix")
+Variable.UDT.uJob.Define("sProduct_Line",String,"Product_Line")
+Variable.UDT.uJob.Define("sDate_Opened",String,"Date_Opened")
+Variable.UDT.uJob.Define("sDate_Closed",String,"Date_Closed")
+Variable.UDT.uJob.Define("sProduct_Line_desc",String)
+Variable.UDT.uJob.Define("sCustomer",String,"Customer")
+Variable.UDT.uJob.Define("fQty_Order",Float,"Qty_Order")
+Variable.UDT.uJob.Define("fPerc_cmpl",Float)
+Variable.UDT.uJob.Define("fHours",Float)
+Variable.UDT.uJob.Define("fOrig_Matl",Float)
+Variable.UDT.uJob.Define("fAdj_Matl",Float)
+Variable.UDT.uJob.Define("fOrig_Outside",Float)
+Variable.UDT.uJob.Define("fAdj_Outside",Float)
+Variable.UDT.uJob.Define("sCustomer_Name",String)
+Variable.uGlobal.uJob.Declare("uJob")
+
+
+Variable.UDT.uPL.Define("sProduct_line",String,"Product_line")
+Variable.UDT.uPL.Define("sProduct_line_desc",String,"Product_line_desc")
+Variable.uGlobal.uPL.Declare("uPL")
+
+
+Variable.Global.iKey.Declare(Long,0)
+
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'Coded by: Jackie Theriot
+'Project Start Date: 12/13/2012
+'Work Order Summary by Product Line
+'Crystal report:  GCG_SF_WOSumm_PL.rpt
+'Issue:  6523
+'Notes:  Custom for Genessee Stamping and Fabricating, Inc.
+'Quote:  3329
+'Callwrapper:  990000, xjb120g	
+
+'open connection
+
+F.ODBC.connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.puser,V.Ambient.PPass)
+gui.SS_Form1..applytranslation
+Gui.SS_Form1.lvw1_PL.ClearItems
+Gui.SS_Form1.lvw1_WO.ClearItems
+
+Gui.SS_Form1..show
+'End ==========================================================
+
+Program.Sub.Main.End
+
+program.sub.cmd1_print_click.start
+'Start ========================================================
+'Print Button
+V.Local.ic.Declare(Long)
+V.Local.srows.Declare(String)
+V.Local.iord.Declare(Long)
+V.Local.srange.Declare(String)
+V.Local.squery.Declare(String)
+V.Local.sDate1.Declare(String)
+V.local.sSql.declare(String)
+V.local.sret.declare(String)
+V.local.sError.declare(String)
+
+V.Local.BegDate.Declare(String)
+V.Local.Parameters.Declare(String,"")
+V.local.sSplitString.declare(String)
+V.local.sretSplit.declare(String)
+V.local.sretpiece.declare(String)
+V.local.sretp.declare(String)
+
+
+'Disappear the screen
+Gui.SS_Form1..Visible(False)
+
+F.Intrinsic.Control.SetErrorHandler("Cmd1_print_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+f.intrinsic.string.format(V.screen.SS_Form1!dtp1_BegDate.value.pervasivedate,"YYYY-MM-DD",V.local.sDate1)
+
+	V.uGlobal.uJob.Redim(-1,-1)
+	V.uGlobal.uPL.Redim(-1,-1)
+
+F.Intrinsic.Control.If(V.Screen.ss_form1!chk1_AllWO.value,=,1)
+'===================================================
+'select all work orders
+'===================================================
+
+	V.local.squery.set("Select job,suffix,product_line,date_opened,date_closed,customer,qty_order ")
+	F.Intrinsic.String.Concat(V.local.squery," from v_job_header",V.local.squery)
+	F.Intrinsic.String.Concat(V.local.squery," where (date_opened <='",V.local.sdate1,"') ",V.local.squery)
+	F.Intrinsic.String.Concat(V.local.squery," and  ((date_closed < date_opened) or ((date_closed > date_opened) and (date_closed >  '",V.local.sdate1,"'))) ",V.local.squery)
+	F.Intrinsic.String.Concat(V.local.squery," order by job,suffix",V.Local.squery)
+
+' save selected records in record set
+	F.ODBC.Connection!conx.OpenRecordsetRW("rstJob",V.Local.squery)
+	F.Intrinsic.Variable.LoadUDTFromRecordset("conx","rstJob","v.uGlobal.uJob",False,0)
+	F.odbc.conx!rstJob.close
+
+F.Intrinsic.Control.Else
+
+' Spin through listview of work orders
+
+	Gui.SS_Form1.lvw1_WO.RetrieveAllListItems(V.Local.srows)
+	F.Intrinsic.Control.If(V.local.srows,<>,"***NORETURN***")
+		F.Intrinsic.String.Split(V.Local.srows,"*!*",V.Local.srows)
+=========================================================
+' build recordsets from po_lines by work order ranges
+'============================================================
+		F.Intrinsic.Control.For(V.Local.ic,0,V.Local.srows.UBound,1)
+		Gui.SS_Form1.lvw1_WO.RetrieveItemOrdinal(V.local.srows(v.local.ic),V.local.iord)
+		V.Local.srange.Set(V.Screen.SS_Form1!lvw1_WO.ListItemTextExtended(v.Local.iord))
+		F.Intrinsic.String.Split(V.Local.srange,"*!*",V.Local.srange)
+
+	V.local.squery.set("Select job,suffix,product_line,date_opened,customer,qty_order ")
+	F.Intrinsic.String.Concat(V.local.squery," from v_job_header",V.local.squery)
+	F.Intrinsic.String.Concat(V.local.squery," where (date_opened <='",V.local.sdate1,"') ",V.local.squery)
+	F.Intrinsic.String.Concat(V.local.squery," and  ((date_closed < date_opened) or ((date_closed > date_opened) and (date_closed >  '",V.local.sdate1,"'))) ",V.local.squery)
+	F.Intrinsic.String.Concat(V.local.squery," and  (job between '",V.local.srange(0),"' and '",V.local.srange(1),"' )",V.local.squery)
+	F.Intrinsic.String.Concat(V.local.squery," order by job,suffix",V.Local.squery)
+
+' save selected records in record set
+	F.ODBC.Connection!conx.OpenRecordsetRW("rstJob",V.Local.squery)
+	F.Intrinsic.Variable.LoadUDTFromRecordset("conx","rstJob","v.uGlobal.uJob",False,0)
+	F.odbc.conx!rstJob.close
+
+	F.Intrinsic.Control.Next(V.Local.ic)
+	F.Intrinsic.Control.Endif
+F.Intrinsic.Control.Endif
+
+'=========================================
+' Check to see if all product line option selected
+'=========================================
+F.Intrinsic.Control.If(V.Screen.ss_form1!chk2_AllPL.value,=,1)
+	V.local.squery.set("Select product_line,product_line_desc ")
+	F.Intrinsic.String.Concat(V.local.squery," from V_product_line",V.local.squery)
+	F.Intrinsic.String.Concat(V.local.squery," order by product_line",V.Local.squery)
+
+' save selected records in record set
+	F.ODBC.Connection!conx.OpenRecordsetRW("rstPL",V.Local.squery)
+	F.Intrinsic.Variable.LoadUDTFromRecordset("conx","rstPL","v.uGlobal.uPL",False,0)
+	F.odbc.conx!rstPL.close
+
+F.Intrinsic.Control.Else
+
+' Spin through listview of work orders
+
+	Gui.SS_Form1.lvw1_PL.RetrieveAllListItems(V.Local.srows)
+	F.Intrinsic.Control.If(V.local.srows,<>,"***NORETURN***")
+		F.Intrinsic.String.Split(V.Local.srows,"*!*",V.Local.srows)
+
+'============================================================
+' build recordsets from po_lines by work order ranges
+'============================================================
+		F.Intrinsic.Control.For(V.Local.ic,0,V.Local.srows.UBound,1)
+		Gui.SS_Form1.lvw1_PL.RetrieveItemOrdinal(V.local.srows(v.local.ic),V.local.iord)
+		V.Local.srange.Set(V.Screen.SS_Form1!lvw1_PL.ListItemTextExtended(v.Local.iord))
+		F.Intrinsic.String.Split(V.Local.srange,"*!*",V.Local.srange)
+
+		V.local.squery.set("Select product_line,product_line_desc ")
+		F.Intrinsic.String.Concat(V.local.squery," from V_product_line",V.local.squery)
+		F.Intrinsic.String.Concat(V.local.squery," where  (product_line between '",V.local.srange(0),"' and '",V.local.srange(1),"' )",V.local.squery)
+		F.Intrinsic.String.Concat(V.local.squery," order by product_line",V.Local.squery)
+
+' save selected records in record set
+		F.ODBC.Connection!conx.OpenRecordsetRW("rstPL",V.Local.squery)
+		F.Intrinsic.Variable.LoadUDTFromRecordset("conx","rstPL","v.uGlobal.uPL",True,0)
+		F.odbc.conx!rstPL.close
+
+		F.Intrinsic.Control.Next(V.Local.ic)
+	F.Intrinsic.Control.Endif
+'match udts on product line and only keep work orders that match product line ranges selected
+F.Intrinsic.Control.If(V.uGlobal.uPL.UBound,<>,-1)
+	F.Intrinsic.Control.If(V.uGlobal.uJob.Ubound,<>,-1)
+		F.Intrinsic.Variable.udtFlagAll(V.uglobal.uJob)
+'match product lines in uPL udt against uJob udt
+		F.Intrinsic.Control.For(V.local.iC,0,V.uGlobal.uPL!sproduct_line.ubound,1)
+	   		F.intrinsic.variable.udtmultiunflag(V.uGlobal.ujob!sproduct_line,V.uGlobal.uPL(v.local.iC)!sproduct_line)
+		F.intrinsic.control.next(V.local.iC)
+		F.intrinsic.variable.udtdeleteflagged(V.uglobal.ujob)
+	F.Intrinsic.Control.endif
+F.Intrinsic.Control.Else
+	V.uGlobal.uJob.Redim(-1,-1)
+	V.uGlobal.uPL.Redim(-1,-1)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Endif
+
+F.Intrinsic.Control.If(V.uGlobal.uJob.UBound,<>,-1)
+	F.Intrinsic.Control.If(V.uGlobal.uPL.UBound,<>,-1)
+		F.Intrinsic.Control.For(V.local.iC,0,V.uGlobal.uPL!sproduct_line.ubound,1)
+	   		F.intrinsic.variable.udtmultiseekset(V.uGlobal.ujob!sproduct_line,V.uGlobal.uPL(v.local.iC)!sproduct_line,V.uGlobal.ujob!sproduct_line_desc,V.uGlobal.uPL(v.local.iC)!sproduct_line_desc)
+		F.Intrinsic.Control.Next(V.Local.ic)
+	F.Intrinsic.Control.EndIf
+
+' Set terminal id value in uJob udt
+	F.Intrinsic.Variable.udtsetmembervalue(V.uGlobal.uJob!sTerminal,V.Caller.Terminal)
+	F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uJob!sTerminal,"Terminal")
+	F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uJob!sProduct_Line_Desc,"PL_Desc")
+	F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uJob!fPerc_Cmpl,"Perc_Cmpl")
+	F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uJob!fHours,"Hours")
+	F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uJob!fOrig_Matl,"Orig_Matl")
+	F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uJob!fAdj_Matl,"Adj_Matl")
+	F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uJob!fOrig_Outside,"Orig_Outside")
+	F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uJob!fAdj_Outside,"Adj_Outside")
+	F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uJob!sCustomer_Name,"Customer_Name")
+	F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uJob!sDate_Opened,"")
+	F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uJob!sDate_Closed,"")
+F.Intrinsic.Control.EndIf
+
+
+F.ODBC.Connection!conx.OpenRecordsetRW("rstzJob","GCG_3311_WOSumm_PL")
+'delete records from crystal table
+	F.Intrinsic.String.Concat("Delete GCG_3311_WOSumm_PL where Terminal = '",V.Caller.Terminal,"'",V.Local.sSql)
+	F.ODBC.Connection!conx.Execute(V.Local.sSql)
+	F.Intrinsic.Control.If(V.uGlobal.uJob.Ubound,<>,-1)
+        	F.Intrinsic.Variable.saveudttorecordset("conx","rstzJob","v.uglobal.uJob")
+	F.Intrinsic.Control.EndIf
+F.ODBC.conx!rstzJob.Close
+
+' call callwrapper
+
+F.Intrinsic.String.datestring(V.Screen.SS_Form1!dtp1_BegDate.value,V.Local.begdate)
+'V.Local.company.Set(V.caller.companycode)
+
+F.Intrinsic.string.concat(V.local.BegDate,"!*!",V.local.parameters)
+
+'F.Intrinsic.Debug.callwrapperdebugenable
+Function.Global.General.CallWrapperSyncBIO(990000,V.Local.parameters)
+
+'===========================================================
+'split callwrapperreturn
+'===========================================================
+F.Intrinsic.Control.If(V.Ambient.callwrapperReturn,<>,"")
+V.Local.sSplitString.Set(V.ambient.callwrapperReturn)
+F.Intrinsic.String.Split(V.Local.sSplitString,"*!*",V.Local.sretsplit)
+F.Intrinsic.Control.For(V.Local.ic,0,V.Local.sretsplit.UBound,1)
+	F.Intrinsic.String.Split(V.Local.sretsplit(v.Local.ic),"::",V.local.sretpiece)
+		F.Intrinsic.Control.If(V.local.sretpiece(0),=,"RETURN")
+		F.Intrinsic.Control.andIf(V.Local.sretpiece(1),<>,0)
+			Function.Intrinsic.String.Concat("Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with callwrapper return code = ",V.local.sretpiece(1),V.Local.sError)
+			F.Intrinsic.UI.Msgbox(V.Local.sError)
+			F.Intrinsic.Control.CallSub(Ss_form1_unload)
+		F.Intrinsic.Control.endIf
+	F.intrinsic.control.next(V.local.iC)
+F.intrinsic.Control.endif
+
+F.Intrinsic.Control.CallSub(Callbi)
+
+F.Intrinsic.Control.CallSub(Ss_form1_unload)
+
+F.Intrinsic.Control.Label("Cmd1_print_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Script: GCG_SF_WOSumm_PL.gas ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+'End ========================================================
+
+
+program.sub.cmd1_print_click.end
+
+Program.Sub.CallBI.Start
+'Start ==========================================================
+V.Local.sError.Declare(String)
+V.Local.sParam.Declare(String)
+V.Local.sParamVal.Declare(String)
+V.Local.sValues.Declare(String)
+V.Local.sPath.Declare(String)
+V.Local.iBI.Declare(Long)
+
+F.Intrinsic.Control.SetErrorHandler("Callbi_Err")
+F.Intrinsic.Control.ClearErrors
+
+F.Intrinsic.String.Split("Terminal*!*BegDate*!*AllPL*!*AllWO","*!*",V.Local.sParam)
+F.Intrinsic.String.Concat(V.caller.Terminal,"*!*",V.screen.ss_form1!dtp1_Begdate.value,"*!*",V.Screen.SS_Form1!chk2_AllPl.Value,"*!*",V.Screen.SS_Form1!chk1_AllWO.Value,V.Local.sValues)
+F.Intrinsic.String.Split(V.Local.sValues,"*!*",V.Local.sValues)
+
+F.intrinsic.string.concat(V.Caller.busintdir,"\GCG_3311_SF_WOSumm_PL.rpt",V.Local.spath)
+F.Global.BI.Initializereport("Open Work Order Summary by Product Line",V.local.spath,V.Local.iBI)
+F.Global.BI.GetIDFromName("GCG_SF_WOSumm_PL.rpt",0,V.Local.iBI)
+F.Global.BI.PrintReport(V.Local.iBI,0,V.Local.sParam,V.Local.sValues,"",False)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Callbi_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Script: GCG_SF_WOSumm_PL.gas ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+'End ==========================================================
+
+Program.Sub.CallBI.End
+
+program.sub.ss_form1_unload.start
+'Start ========================================================
+
+F.ODBC.Connection!conx.Close
+F.Intrinsic.Control.End
+
+'End ==========================================================
+
+program.sub.ss_form1_unload.end
+
+program.sub.txt1_begpl_gotfocus.start
+Gui.SS_Form1.txt1_Begpl.SelectAll
+
+program.sub.txt1_begpl_gotfocus.end
+
+program.sub.txt1_begpl_lostfocus.start
+Gui.SS_Form1.txt2_Endpl.Text(V.Screen.SS_Form1!txt1_Begpl.Text)
+
+program.sub.txt1_begpl_lostfocus.end
+
+program.sub.cmd_txt1_begpl_click.start
+'Start ==========================================================
+'Beginning Product Line Browser
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.sTitles.Declare(String)
+V.Local.sWidths.Declare(String)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("cmd_txt1_begpl_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+
+F.Intrinsic.UI.Browser(130,"",V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.ss_form1.txt1_begpl.Text(V.Local.sRet.Trim)
+	Gui.SS_Form1.txt2_Endpl.Text(V.Screen.SS_Form1!txt1_Begpl.Text)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txt1_begpl_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+'End ==========================================================
+
+program.sub.cmd_txt1_begpl_click.end
+
+program.sub.txt2_endpl_gotfocus.start
+Gui.SS_Form1.txt2_Endpl.SelectAll
+
+program.sub.txt2_endpl_gotfocus.end
+
+program.sub.cmd_txt2_endpl_click.start
+'Start ==========================================================
+'Ending Product Lines Browser
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.sTitles.Declare(String)
+V.Local.sWidths.Declare(String)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("cmd_txt2_endpl_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+
+F.Intrinsic.UI.Browser(130,"",V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.ss_form1.txt2_endpl.Text(V.Local.sRet.Trim)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txt2_endpl_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+'End ==========================================================
+
+program.sub.cmd_txt2_endpl_click.end
+
+program.sub.cmd_lvw1_pladd_click.start
+'Start ========================================================
+'Listview Add button
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+
+
+F.Intrinsic.Control.SetErrorHandler("cmd_lvw1_PLadd_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+F.Intrinsic.control.If(V.screen.SS_Form1!txt1_begpl.text,<," ")
+F.Intrinsic.control.andIf(V.screen.SS_Form1!txt2_endpl.text,<," ")
+	F.intrinsic.control.exitsub
+Function.Intrinsic.Control.EndIf
+
+F.Intrinsic.Math.Add(V.global.iKey,1,V.global.iKey)
+Gui.SS_Form1.lvw1_pl.AddListItem(V.global.iKey,V.Screen.SS_Form1!txt1_Begpl.Text)
+Gui.SS_Form1.lvw1_pl.SetListItemSubItemText(V.global.iKey,1,V.Screen.SS_Form1!txt2_Endpl.Text)
+Gui.SS_Form1.txt1_Begpl.Text("")
+Gui.SS_Form1.txt2_Endpl.Text("")
+	
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvw1_PLadd_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+'End ==========================================================
+
+program.sub.cmd_lvw1_pladd_click.end
+
+program.sub.cmd_lvw1_pldelete_click.start
+'Start ========================================================
+'listview delete button
+V.Local.sError.Declare(String)
+V.Local.iKey.Declare(Long)
+V.Local.iOrd.Declare(Long)
+
+F.Intrinsic.Control.SetErrorHandler("cmd_lvw1_PLdelete_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.iKey.Set(V.Screen.SS_Form1!lvw1_PL.SelectedItemKey)
+Gui.SS_Form1.lvw1_PL.removeitem(V.Local.iKey)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvw1_PLDelete_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+'End ==========================================================
+
+program.sub.cmd_lvw1_pldelete_click.end
+
+program.sub.cmd_lvw1_plclear_click.start
+'Start ========================================================
+'listview clear button
+V.Local.sError.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("cmd_lvw1_PLClear_Err")
+F.Intrinsic.Control.ClearErrors
+
+Gui.SS_Form1.lvw1_PL.ClearItems
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvw1_PLClear_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+'End ==========================================================
+
+program.sub.cmd_lvw1_plclear_click.end
+
+program.sub.chk2_allpl_click.start
+'Start ========================================================
+
+'All Product Lines
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!chk2_Allpl.Value,=,1)
+'disable entry of product line range
+	Gui.SS_Form1.txt1_Begpl.Enabled(false)
+	Gui.SS_Form1.txt2_Endpl.Enabled(false)
+	Gui.SS_Form1.cmd_txt1_Begpl.Enabled(false)
+	Gui.SS_Form1.cmd_txt2_Endpl.Enabled(false)
+	Gui.ss_form1.cmd_lvw1_pladd.Enabled(false)
+	Gui.ss_form1.cmd_lvw1_plclear.Enabled(false)
+	Gui.ss_form1.cmd_lvw1_pldelete.Enabled(false)
+	Gui.SS_Form1.txt1_Begpl.Text("")
+	Gui.SS_Form1.txt2_Endpl.Text("")
+	Gui.SS_Form1.lvw1_pl.ClearItems
+
+F.Intrinsic.control.Else
+
+'enable entry of product line range
+	Gui.SS_Form1.txt1_Begpl.Enabled(true)
+	Gui.SS_Form1.txt2_Endpl.Enabled(true)
+	Gui.SS_Form1.cmd_txt1_Begpl.Enabled(true)
+	Gui.SS_Form1.cmd_txt2_Endpl.Enabled(true)
+	Gui.ss_form1.cmd_lvw1_pladd.Enabled(true)
+	Gui.ss_form1.cmd_lvw1_plclear.Enabled(true)
+	Gui.ss_form1.cmd_lvw1_pldelete.Enabled(true)
+	Gui.SS_Form1.lvw1_pl.ClearItems
+F.Intrinsic.Control.EndIf
+
+'End ==========================================================
+
+program.sub.chk2_allpl_click.end
+
+program.sub.cmd_txt1_begwo_click.start
+'Start ==========================================================
+'Beginning Product Line Browser
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.sTitles.Declare(String)
+V.Local.sWidths.Declare(String)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("cmd_txt1_begwo_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+
+F.Intrinsic.UI.Browser(1000,"",V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.ss_form1.txt1_begwo.Text(V.Local.sRet.Trim)
+	Gui.SS_Form1.txt1_Endwo.Text(V.Screen.SS_Form1!txt1_Begwo.Text)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txt1_begwo_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+'End ==========================================================
+
+
+program.sub.cmd_txt1_begwo_click.end
+
+program.sub.cmd_txt1_endwo_click.start
+'Start ==========================================================
+'Ending Product Lines Browser
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.sTitles.Declare(String)
+V.Local.sWidths.Declare(String)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("cmd_txt2_endwo_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+
+F.Intrinsic.UI.Browser(1000,"",V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.ss_form1.txt1_endwo.Text(V.Local.sRet.Trim)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txt1_endwo_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+'End ==========================================================
+
+program.sub.cmd_txt1_endwo_click.end
+
+program.sub.chk1_allwo_click.start
+'Start ========================================================
+
+'All Work Orders
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!chk1_Allwo.Value,=,1)
+'disable entry of product line range
+	Gui.SS_Form1.txt1_Begwo.Enabled(false)
+	Gui.SS_Form1.txt1_Endwo.Enabled(false)
+	Gui.SS_Form1.cmd_txt1_Begwo.Enabled(false)
+	Gui.SS_Form1.cmd_txt1_Endwo.Enabled(false)
+	Gui.ss_form1.cmd_lvw1_woadd.Enabled(false)
+	Gui.ss_form1.cmd_lvw1_woclear.Enabled(false)
+	Gui.ss_form1.cmd_lvw1_wodelete.Enabled(false)
+	Gui.SS_Form1.txt1_Begwo.Text("")
+	Gui.SS_Form1.txt1_Endwo.Text("")
+	Gui.SS_Form1.lvw1_wo.ClearItems
+
+F.Intrinsic.control.Else
+
+'enable entry of work order range
+	Gui.SS_Form1.txt1_Begwo.Enabled(true)
+	Gui.SS_Form1.txt1_Endwo.Enabled(true)
+	Gui.SS_Form1.cmd_txt1_Begwo.Enabled(true)
+	Gui.SS_Form1.cmd_txt1_Endwo.Enabled(true)
+	Gui.ss_form1.cmd_lvw1_woadd.Enabled(true)
+	Gui.ss_form1.cmd_lvw1_woclear.Enabled(true)
+	Gui.ss_form1.cmd_lvw1_wodelete.Enabled(true)
+	Gui.SS_Form1.lvw1_wo.ClearItems
+F.Intrinsic.Control.EndIf
+
+'End ==========================================================
+
+program.sub.chk1_allwo_click.end
+
+program.sub.cmd_lvw1_woadd_click.start
+'Start ========================================================
+'Listview Add button
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+
+
+F.Intrinsic.Control.SetErrorHandler("cmd_lvw1_woadd_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+F.Intrinsic.control.If(V.screen.SS_Form1!txt1_begwo.text,<," ")
+F.Intrinsic.control.andIf(V.screen.SS_Form1!txt1_endwo.text,<," ")
+	F.intrinsic.control.exitsub
+Function.Intrinsic.Control.EndIf
+
+F.Intrinsic.Math.Add(V.global.iKey,1,V.global.iKey)
+Gui.SS_Form1.lvw1_wo.AddListItem(V.global.iKey,V.Screen.SS_Form1!txt1_Begwo.Text)
+Gui.SS_Form1.lvw1_wo.SetListItemSubItemText(V.global.iKey,1,V.Screen.SS_Form1!txt1_Endwo.Text)
+Gui.SS_Form1.txt1_Begwo.Text("")
+Gui.SS_Form1.txt1_Endwo.Text("")
+	
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvw1_woadd_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+'End ==========================================================
+
+program.sub.cmd_lvw1_woadd_click.end
+
+program.sub.cmd_lvw1_wodelete_click.start
+'Start ========================================================
+'listview delete button
+V.Local.sError.Declare(String)
+V.Local.iKey.Declare(Long)
+V.Local.iOrd.Declare(Long)
+
+F.Intrinsic.Control.SetErrorHandler("cmd_lvw1_wodelete_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.iKey.Set(V.Screen.SS_Form1!lvw1_wo.SelectedItemKey)
+Gui.SS_Form1.lvw1_wo.removeitem(V.Local.iKey)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvw1_woDelete_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+'End ==========================================================
+
+program.sub.cmd_lvw1_wodelete_click.end
+
+program.sub.cmd_lvw1_woclear_click.start
+'Start ========================================================
+'listview clear button
+V.Local.sError.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("cmd_lvw1_woClear_Err")
+F.Intrinsic.Control.ClearErrors
+
+Gui.SS_Form1.lvw1_wo.ClearItems
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvw1_woClear_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+'End ==========================================================
+
+program.sub.cmd_lvw1_woclear_click.end
+
+program.sub.txt1_begwo_gotfocus.start
+Gui.SS_Form1.txt1_Begwo.SelectAll
+
+program.sub.txt1_begwo_gotfocus.end
+
+program.sub.txt1_begwo_lostfocus.start
+Gui.SS_Form1.txt1_Endwo.Text(V.Screen.SS_Form1!txt1_Begwo.Text)
+
+program.sub.txt1_begwo_lostfocus.end
+
+program.sub.txt1_endwo_gotfocus.start
+Gui.SS_Form1.txt1_Endwo.SelectAll
+
+program.sub.txt1_endwo_gotfocus.end
+
+Program.Sub.ScreenSS.Start
+SS_Form1{{CAPTION::Work Order Summary by Product Line
+SS_Form1.CTRL{{NAME::dtp1_Begdate\\TYPE::6\\CAPTION::Cutoff Date\\TABSTOP::1\\GROUP::1\\BROWSER::0\\INTL::156600\\SIZE::1
+SS_Form1.CTRL{{NAME::txt1_BegPL\\TYPE::2\\CAPTION::Beginning Product Line\\RANGE::lvw1_PL\\TABSTOP::2\\GROUP::2\\BROWSER::1\\INTL::62500\\SIZE::1
+SS_Form1.CTRL{{NAME::txt2_EndPL\\TYPE::2\\CAPTION::Ending Product Line\\RANGE::lvw1_PL\\TABSTOP::3\\GROUP::2\\BROWSER::1\\INTL::215100\\SIZE::1
+SS_Form1.CTRL{{NAME::chk2_AllPL\\TYPE::9\\CAPTION::All Product Lines\\TABSTOP::4\\GROUP::-1\\SUBGROUP::1\\BROWSER::0\\INTL::21600\\SIZE::1
+SS_Form1.CTRL{{NAME::lvw1_PL\\TYPE::7\\GROUP::-1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::txt1_BegWO\\TYPE::2\\CAPTION::Beginning Work Order\\RANGE::lvw1_WO\\TABSTOP::5\\GROUP::3\\BROWSER::1\\INTL::64400\\SIZE::1
+SS_Form1.CTRL{{NAME::txt1_EndWO\\TYPE::2\\CAPTION::Ending Work Order\\RANGE::lvw1_WO\\TABSTOP::6\\GROUP::3\\BROWSER::1\\INTL::217300\\SIZE::1
+SS_Form1.CTRL{{NAME::chk1_AllWO\\TYPE::9\\CAPTION::All Work Orders\\TABSTOP::7\\GROUP::-1\\SUBGROUP::1\\BROWSER::0\\INTL::18803\\SIZE::1
+SS_Form1.CTRL{{NAME::lvw1_WO\\TYPE::7\\GROUP::-1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::cmd1_Print\\TYPE::5\\CAPTION::Print\\TABSTOP::8\\GROUP::-1\\BROWSER::0\\INTL::452800\\SIZE::1
+
+Program.Sub.ScreenSS.End
+
